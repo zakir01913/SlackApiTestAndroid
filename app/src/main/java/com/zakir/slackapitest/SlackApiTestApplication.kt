@@ -2,7 +2,7 @@ package com.zakir.slackapitest
 
 import android.app.Application
 
-class Application : Application() {
+class SlackApiTestApplication : Application() {
     override fun onCreate() {
         super.onCreate()
     }
