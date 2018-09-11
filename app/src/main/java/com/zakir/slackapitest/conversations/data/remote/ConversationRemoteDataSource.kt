@@ -8,6 +8,13 @@ import javax.inject.Inject
 class ConversationRemoteDataSource constructor(private val conversationsApiService: ConversationsApiService) : ConversationsDataSource {
 
     override fun getChannels(): Flowable<List<ChannelModel>> {
-        return conversationsApiService.getChannels().map { channels -> channels.map { ChannelModel(it.id, it.name, it.num_members) } }
+        return conversationsApiService.getChannels().map { channelResponse ->
+            when {
+                channelResponse.ok -> channelResponse.channels.map { ChannelModel(it.id, it.name, it.num_members) }
+
+                else -> listOf<ChannelModel>()
+            }
+        }
     }
 }
+

@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface ConversationsApiService {
 
     @GET("conversations.list")
-    fun getChannels() : Flowable<List<Channel>>
+    fun getChannels() : Flowable<GetChannelResponse>
 }
