@@ -10,6 +10,7 @@ buildscript {
     ext.mockito_version = '2.7.19'
     ext.gson_version = '2.8.0'
     ext.picasso_version = '2.5.2'
+    ext.converter_gson_version = '2.1.0'
     repositories {
         google()
         jcenter()
