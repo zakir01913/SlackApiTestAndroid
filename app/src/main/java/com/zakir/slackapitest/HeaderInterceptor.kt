@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class HeaderInterceptor @Inject @ApplicationContext constructor(private val context: Context) : Interceptor {
+class HeaderInterceptor @Inject constructor(@ApplicationContext private val context: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         var accessToken = context.getString(R.string.access_token)

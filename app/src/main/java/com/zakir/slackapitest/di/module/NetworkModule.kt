@@ -9,8 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Singleton
-@Module
+@Module(includes = [ContextModule::class])
 class NetworkModule {
 
     @Singleton
@@ -25,7 +24,7 @@ class NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson) : Retrofit {
         return Retrofit.Builder()
-                .baseUrl("https://slack.com/api")
+                .baseUrl("https://slack.com/api/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson)).build()
     }
