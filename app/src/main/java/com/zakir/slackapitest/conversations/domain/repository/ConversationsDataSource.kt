@@ -1,7 +1,8 @@
 package com.zakir.slackapitest.conversations.domain.repository
 
-import com.zakir.slackapitest.conversations.domain.model.Channel
+import com.zakir.slackapitest.conversations.domain.model.ChannelModel
+import io.reactivex.Flowable
 
 interface ConversationsDataSource {
-    fun getChannels() : List<Channel>
+    fun getChannels() : Flowable<List<ChannelModel>>
 }

@@ -5,7 +5,7 @@ import com.zakir.slackapitest.conversations.domain.repository.ConversationsDataS
 import io.reactivex.Flowable
 import javax.inject.Inject
 
-class ConversationRemoteDataSource @Inject constructor(private val conversationsApiService: ConversationsApiService) : ConversationsDataSource {
+class ConversationRemoteDataSource constructor(private val conversationsApiService: ConversationsApiService) : ConversationsDataSource {
 
     override fun getChannels(): Flowable<List<ChannelModel>> {
         return conversationsApiService.getChannels().map { channels -> channels.map { ChannelModel(it.id, it.name, it.num_members) } }
