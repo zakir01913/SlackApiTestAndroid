@@ -12,7 +12,7 @@ class HeaderInterceptor @Inject constructor(@ApplicationContext private val cont
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         var accessToken = context.getString(R.string.access_token)
-        var newRequest = request.newBuilder().header("tokken", accessToken).build()
-        return chain.proceed(newRequest)
+        var httpUrl = request.url().newBuilder().addQueryParameter("token", accessToken).build()
+        return chain.proceed(request.newBuilder().url(httpUrl).build())
     }
 }
